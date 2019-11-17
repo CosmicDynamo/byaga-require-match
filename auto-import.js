@@ -25,7 +25,7 @@
 const glob = require('glob');
 const path = require('path');
 
-module.exports = function (match, baseDir) {
+module.exports = function (match, baseDir = '') {
     const fullPath = path.resolve(path.relative('./', baseDir), match);
     return new Promise((resolve, reject) => {
         glob(fullPath, null, function (err, files) {
@@ -38,6 +38,7 @@ module.exports = function (match, baseDir) {
                 const name = parts[parts.length - 1];
                 return {
                     name,
+                    path: name.substr(baseDir.length).split('.')[0],
                     exports: require(path)
                 };
             }));

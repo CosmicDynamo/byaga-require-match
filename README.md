@@ -20,3 +20,7 @@ requireMatch("./**/*.route.js", __dirname).then(files => {
   app.listen(3000);
 }, err => console.error('err', err.message, err));
 ```
+
+## Params
+- match (string)
+- baseDir (string)[default=process.cwd()] - the directory to begin searching for matching files
