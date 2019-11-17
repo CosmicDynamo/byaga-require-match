@@ -35,10 +35,12 @@ module.exports = function (match, baseDir = '') {
 
             resolve(files.map(path => {
                 const parts = path.split('/');
-                const name = parts[parts.length - 1];
+                const file = parts[parts.length - 1];
+                console.log();
                 return {
-                    name,
-                    path: name.substr(baseDir.length).split('.')[0],
+                    file,
+                    name: file.split('.')[0],
+                    path: path.substring(baseDir.length, path.lastIndexOf('/') + 1),
                     exports: require(path)
                 };
             }));
